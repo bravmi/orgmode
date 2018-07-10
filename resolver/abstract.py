@@ -77,7 +77,8 @@ class AbstractLinkResolver(object):
             sublime.status_message(stdout)
         if stderr:
             stderr = str(stderr, sys.getfilesystemencoding())
-            sublime.error_message(stderr)
+            # sublime.error_message(stderr)
+            print('redirected from error_message:', stderr)
 
 
 class AbstractRegexLinkResolver(AbstractLinkResolver):
