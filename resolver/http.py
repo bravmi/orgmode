@@ -21,7 +21,7 @@ URL_DEFAULT = 'http:%s'
 DEFAULT_OPEN_HTTP_LINK_COMMANDS = dict(
     darwin=['open'],
     win32=['cmd', '/C'],
-    linux=['xdg-open'],
+    linux=['brave-browser'],
 )
 
 
@@ -45,7 +45,7 @@ class Resolver(AbstractRegexLinkResolver):
             sublime.error_message(
                 'Could not get link opener command.\nNot yet supported.')
             return None
-            
+
         # cmd.exe quote is needed, http://ss64.com/nt/syntax-esc.html
         # escape these: ^\  ^&  ^|  ^>  ^<  ^^
         if sys.platform == 'win32':
@@ -83,4 +83,4 @@ class Resolver(AbstractRegexLinkResolver):
             sublime.status_message(stdout)
         if stderr:
             stderr = str(stderr, sys.getfilesystemencoding())
-            sublime.error_message(stderr)
+            print('redirected from error_message:', stderr)
